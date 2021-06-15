@@ -1,4 +1,4 @@
-<h1>Cara mengklon project laravel dari github</h1>
+<h1>How To Run This Laravel Project</h1>
 <p>1.Clone this project. <b>git clone https://github.com/noname-03/UAS_PBO/ </b></p>
 <p>2. Go to the folder application using cd command on your cmd or terminal.</p>
 <p>3. Run <b>composer install </b> on your cmd or terminal. </p>
