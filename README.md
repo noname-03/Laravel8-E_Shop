@@ -1,3 +1,14 @@
+<h1>Cara mengklon project laravel dari github</h1>
+<p>1.Clone this project. <b>git clone <a href="https://github.com/noname-03/PBO">https://github.com/noname-03/PBO</a></b></p>
+<p>2. Go to the folder application using cd command on your cmd or terminal.</p>
+<p>3. Run <b>composer install </b> on your cmd or terminal. </p>
+<p>4. Copy .env.example file to .env on the root folder. ... windows <b>copy .env.example .env </b> Linux <b>cp .env.example .env</b> </p>
+<p>5. Open your . ...</p>
+<p>6. Run <b>php artisan key:generate.</b></p>
+<p>7. Run <b>php artisan migrate.</b></p>
+<p>8. Run <b>php artisan serve.</b></p>
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
