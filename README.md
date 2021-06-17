@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 <h1>Cara mengklon project laravel dari github</h1>
 <p>1.Clone this project. <b>git clone https://github.com/noname-03/UAS_PBO </b></p>
-=======
+=======++++++
 <h1>How To Run This Laravel Project</h1>
 <p>1.Clone this project. <b>git clone https://github.com/noname-03/UAS_PBO/ </b></p>
 >>>>>>> a59b5dcc50dfe119c26942c502906b4525b5093e
