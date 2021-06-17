@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <h1>Cara mengklon project laravel dari github</h1>
 <p>1.Clone this project. <b>git clone https://github.com/noname-03/UAS_PBO </b></p>
+=======
+<h1>How To Run This Laravel Project</h1>
+<p>1.Clone this project. <b>git clone https://github.com/noname-03/UAS_PBO/ </b></p>
+>>>>>>> a59b5dcc50dfe119c26942c502906b4525b5093e
 <p>2. Go to the folder application using cd command on your cmd or terminal.</p>
 <p>3. Run <b>composer install </b> on your cmd or terminal. </p>
 <p>4. Copy .env.example file to .env on the root folder. ... windows <b>copy .env.example .env </b> Linux <b>cp .env.example .env</b> </p>
