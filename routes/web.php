@@ -23,4 +23,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('auth/facebook', [App\Http\Controllers\Auth\LoginController::class, 'facebook']);
 Route::get('auth/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'callback_facebook']);
 Route::get('/test', [App\Http\Controllers\HomeController::class, 'hai'])->name('hai');
-// Route::view('/coba', 'source.sources');
+Route::view('/coba', 'home');
