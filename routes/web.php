@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::get('auth/facebook', [App\Http\Controllers\Auth\LoginController::class, '
 Route::get('auth/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'callback_facebook']);
 Route::get('/test', [App\Http\Controllers\HomeController::class, 'hai'])->name('hai');
 Route::view('/coba', 'home');
+
+Route::resource('cart', CartController::class);
