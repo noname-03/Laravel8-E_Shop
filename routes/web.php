@@ -25,5 +25,9 @@ Route::get('auth/facebook', [App\Http\Controllers\Auth\LoginController::class, '
 Route::get('auth/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'callback_facebook']);
 Route::get('/test', [App\Http\Controllers\HomeController::class, 'hai'])->name('hai');
 Route::view('/coba', 'home');
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/// arahkan ke link ini ketika user klik "login with google"
+Route::get('auth/google', [App\Http\Controllers\Auth\LoginController::class, 'google']);
+/// siapkan route untuk menampung callback dari google
+Route::get('auth/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'google_callback']);
 Route::resource('cart', CartController::class);

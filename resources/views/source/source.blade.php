@@ -45,7 +45,7 @@
                     <a href="{{ url('/auth/facebook') }}" class="social-icon">
                     <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="social-icon">
+                    <a href="{{ url('/auth/google') }}" class="social-icon">
                     <i class="fab fa-google"></i>
                     </a>
                 </div>
@@ -98,7 +98,7 @@
               <a href="{{ url('/auth/facebook') }}" class="social-icon">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="#" class="social-icon">
+              <a href="{{ url('/auth/google') }}" class="social-icon">
                 <i class="fab fa-google"></i>
               </a>
             </div>
