@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Dashboard')
+@section('title', 'Product')
 @section('content')
         <!-- page content -->
         <div class="right_col" role="main">
