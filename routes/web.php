@@ -19,6 +19,7 @@ use App\Http\Controllers\CategoryController;
 //test
 // test
 Route::view('/coba', 'product.index')->name('coba');
+Route::view('/kategori', 'category.index')->name('kategori');
 //end test
 Route::get('/', function () {
     return view('welcome');

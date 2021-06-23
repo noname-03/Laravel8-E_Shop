@@ -9,7 +9,7 @@
         </li>
         <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="{{ route('category.index') }}">Category</a></li>
+            <li><a href="{{ route('kategori') }}">Category</a></li>
             <li><a href="{{ route('coba') }}">Product</a></li>
           </ul>
         </li>
