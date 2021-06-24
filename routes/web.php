@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,8 @@ use App\Http\Controllers\CategoryController;
 
 //test
 // test
-Route::view('/coba', 'product.index')->name('coba');
-Route::view('/kategori', 'category.index')->name('kategori');
+// Route::view('/coba', 'product.index')->name('coba');
+// Route::view('/kategori', 'category.index')->name('kategori');
 //end test
 Route::get('/', function () {
     return view('welcome');
@@ -42,3 +43,4 @@ Route::get('auth/google/callback', [App\Http\Controllers\Auth\LoginController::c
 // data
 Route::resource('cart', CartController::class);
 Route::resource('category', CategoryController::class);
+Route::resource('product', ProductController::class);
