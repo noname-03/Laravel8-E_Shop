@@ -68,14 +68,14 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->category->name}}</td>
-                                <td>{{$data->price}}</td>
+                                <td>@currency($data->price)</td>
                                 <td><img src="{{ asset('images') }}/{{$data->photo}}" alt="" height=300 width=200></td>
                                 <td>{{$data->created_at}}</td>
                                 <td>
                                     <form action="{{ route('product.destroy', ['product'=>$data->id]) }}" method="post">
                                     @csrf @method('DELETE')
                                     <a class="btn btn-primary" href="{{ route('product.edit', ['product'=>$data->id]) }}" role="button"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-success" href="{{ route('product.show', ['product'=>$data->id]) }}" role="button"><i class="fa fa-eye"></i></a>
+                                    {{-- <a class="btn btn-success" href="{{ route('product.show', ['product'=>$data->id]) }}" role="button"><i class="fa fa-eye"></i></a> --}}
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda mau menghapus data ini ?')"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>

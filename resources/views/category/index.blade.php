@@ -66,10 +66,10 @@
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->created_at}}</td>
                                 <td>
-                                    <form action="{{ route('category.destroy', ['category'=>$data->id]) }}" method="post">
+                                    <form action="{{ route('category.destroy', ['category'=>$data->name]) }}" method="post">
                                     @csrf @method('DELETE')
-                                    <a class="btn btn-primary" href="{{ route('category.edit', ['category'=>$data->id]) }}" role="button"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-success" href="{{ route('category.show', ['category'=>$data->id]) }}" role="button"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-primary" href="{{ route('category.edit', ['category'=>$data->name]) }}" role="button"><i class="fa fa-edit"></i></a>
+                                    {{-- <a class="btn btn-success" href="{{ route('category.show', ['category'=>$data->id]) }}" role="button"><i class="fa fa-eye"></i></a> --}}
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda mau menghapus data ini ?')"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>

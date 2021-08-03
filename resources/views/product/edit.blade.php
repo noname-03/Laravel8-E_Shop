@@ -1,3 +1,4 @@
+
 @extends('layouts.template')
 @section('title', 'Product')
 @section('content')
@@ -43,6 +44,13 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
                                             <input type="text" name="name" value="{{$product->name}}" id="first-name" required="required" class="form-control ">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Price <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" name="price" value="{{$product->price}}" id="first-name" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     <div class="item form-group">

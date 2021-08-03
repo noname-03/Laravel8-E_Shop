@@ -17,7 +17,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        // $details = DetailTransaction::all();
+        // // dd($detail);
+        // return view('cart.invoice', compact('details'));
     }
 
     /**
@@ -27,24 +29,31 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        $transaksi = Auth::user()->transactions()->create([
-            'total' => '1000',
-        ]);
+        // $transaksi = Auth::user()->transactions()->create($request->all());
 
-        $carts = Auth::user()->carts;
-        $carts->map(function($obj) use($transaksi) {
-            unset($obj->user_id);
-            unset($obj->created_at);
-            unset($obj->updated_at);
-            $obj['transaksi_id'] = $transaksi->id;
-            return $obj;
-        });
+        // $carts = Auth::user()->carts;
+        // $carts->map(function($obj) use($transaksi) {
+        //     unset($obj->user_id);
+        //     unset($obj->created_at);
+        //     unset($obj->updated_at);
+        //     $obj['transaksi_id'] = $transaksi->id;
+        //     $a = new DetailTransaction;
+        //     $a->transaction_id = $obj->transaksi_id;
+        //     $a->product_id = $obj->product_id;
+        //     $a->qty = $obj->qty;
+        //     $a->subtotal = $obj->subtotal;
+        //     $a->save();
+        //     return $obj;
+        // });
+
+        //     Cart::where('user_id', '=', Auth::user()->id)->delete();
+        //     return redirect()->route('transaction.show', ['transaction'=>$transaksi->id]);
+
+        // dd($carts);
         // return $carts;
-        DetailTransaction::insert($carts);
+        // DetailTransaction::insert($carts);
 
-        // Cart::where('user_id', '=', Auth::user()->id)->delete();
-
-        $carts->delete();
+        // $carts->delete();
         /**
          *  Get array cart by user id
          *  create data transaksi. user id? Auth::user()->id
@@ -74,8 +83,27 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        $transaksi = Auth::user()->transactions()->create($request->all());
+
+        $carts = Auth::user()->carts;
+        $carts->map(function($obj) use($transaksi) {
+            unset($obj->user_id);
+            unset($obj->created_at);
+            unset($obj->updated_at);
+            $obj['transaksi_id'] = $transaksi->id;
+            $a = new DetailTransaction;
+            $a->transaction_id = $obj->transaksi_id;
+            $a->product_id = $obj->product_id;
+            $a->qty = $obj->qty;
+            $a->subtotal = $obj->subtotal;
+            $a->save();
+            return $obj;
+        });
+
+            Cart::where('user_id', '=', Auth::user()->id)->delete();
+            return redirect()->route('transaction.show', ['transaction'=>$transaksi->id]);
         // Transaction::create(Auth::user->id);
-        Auth::user()->transactions()->create();
+        // Auth::user()->transactions()->create();
     }
 
     /**
@@ -86,8 +114,16 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
-    }
+
+        // return $transaction->user->name;
+        // $transactions = Transaction::find($transaction);
+        // dd($transactions);
+        // foreach ($transaction->transactions as $data) {
+        //     echo $data->product->name;
+        return view('cart.invoice', compact('transaction'));
+        }
+        // return view('cart.invoice', compact('transaction'));
+
 
     /**
      * Show the form for editing the specified resource.
@@ -121,5 +157,16 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         //
+    }
+    public function datatransaction()
+    {
+        $transactions = Transaction::all();
+        // dd($transactions);
+        return view('transaction.index', compact('transactions'));
+    }
+    public function datatransactionshow(Transaction $transaction)
+    {
+        // dd($transaction);
+        return view('transaction.show', compact('transaction'));
     }
 }

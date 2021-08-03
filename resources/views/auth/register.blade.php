@@ -77,8 +77,8 @@
                 </button>
                 <p class="social-text">Or Sign in with social platforms</p>
                 <div class="social-media">
-                    <a href="{{ url('/auth/facebook') }}" class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
+                    {{-- <a href="{{ url('/auth/facebook') }}" class="social-icon">
+                    <i class="fab fa-facebook-f"></i> --}}
                     </a>
                     <a href="{{ url('/auth/google') }}" class="social-icon">
                     <i class="fab fa-google"></i>
@@ -130,8 +130,8 @@
             <input type="submit" class="btn" value="Sign up" />
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
-              <a href="{{ url('/auth/facebook') }}" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
+              {{-- <a href="{{ url('/auth/facebook') }}" class="social-icon">
+                <i class="fab fa-facebook-f"></i> --}}
               </a>
               <a href="{{ url('/auth/google') }}" class="social-icon">
                 <i class="fab fa-google"></i>

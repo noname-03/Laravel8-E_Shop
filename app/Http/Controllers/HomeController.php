@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('layouts.dashboard');
+        $role = Auth::user()->role;
+        if($role == "admin"){
+            return redirect()->to('admin');
+            return 'admin';
+        } else if($role == "user"){
+            return redirect()->to('shop');
+        } else {
+            return redirect()->to('logout');
+        }
     }
 }

@@ -61,13 +61,14 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
   <link href="{{ asset('eshop/theme') }}/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
   <link href="{{ asset('eshop/theme') }}/assets/corporate/css/custom.css" rel="stylesheet">
   <!-- Theme styles END -->
+  @yield('link')
 </head>
 <!-- Head END -->
 
 <!-- Body BEGIN -->
 <body class="ecommerce">
     <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel hidden-sm">
+    {{-- <div class="color-panel hidden-sm">
       <div class="color-mode-icons icon-color"></div>
       <div class="color-mode-icons icon-color-close"></div>
       <div class="color-mode">
@@ -81,7 +82,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <li class="color-turquoise" data-style="turquoise"></li>
         </ul>
       </div>
-    </div>
+    </div> --}}
     <!-- END BEGIN STYLE CUSTOMIZER -->
 
     <!-- BEGIN TOP BAR -->
@@ -91,11 +92,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <!-- BEGIN TOP BAR LEFT PART -->
                 <div class="col-md-6 col-sm-6 additional-shop-info">
                     <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
+                        <li><i class="fa fa-phone"></i><span>+62 896 6717</span></li>
                         <!-- BEGIN CURRENCIES -->
                         <li class="shop-currencies">
-                            <a href="javascript:void(0);">€</a>
-                            <a href="javascript:void(0);">£</a>
                             <a href="javascript:void(0);" class="current">$</a>
                         </li>
                         <!-- END CURRENCIES -->
@@ -115,10 +114,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <!-- BEGIN TOP BAR MENU -->
                 <div class="col-md-6 col-sm-6 additional-nav">
                     <ul class="list-unstyled list-inline pull-right">
-                        <li><a href="shop-account.html">My Account</a></li>
-                        <li><a href="shop-wishlist.html">My Wishlist</a></li>
                         <li><a href="{{ route('cart.index') }}">Checkout</a></li>
                         <li><a href="{{ route('login') }}">Log In</a></li>
+                        <li>
+                            <a class="dropdown-item"  href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <!-- END TOP BAR MENU -->
@@ -156,7 +160,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <div class="col-md-4 steps-block-col">
             <i class="fa fa-phone"></i>
             <div>
-              <h2>477 505 8877</h2>
+              <h2>+62 891 909 922</h2>
               <em>24/7 customer care available</em>
             </div>
           </div>
@@ -172,8 +176,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <!-- BEGIN BOTTOM ABOUT BLOCK -->
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2>About us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
-            <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
+            <p>Shopnow menjual berbagai produk barang berkualitas mulai dari sneakers, clothing, jeans dan barang kekinian lainnya.
+                Jika ingin lebih detail lagi, Anda juga bisa memilih barang dari tiap kategori produk dihalaman utama. </p>
+            <p>Selamat Belanja</p>
           </div>
           <!-- END BOTTOM ABOUT BLOCK -->
           <!-- BEGIN BOTTOM INFO BLOCK -->
@@ -192,10 +197,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <!-- END INFO BLOCK -->
 
           <!-- BEGIN TWITTER BLOCK -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
+          {{-- <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2 class="margin-bottom-0">Latest Tweets</h2>
             <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>
-          </div>
+          </div> --}}
           <!-- END TWITTER BLOCK -->
 
           <!-- BEGIN BOTTOM CONTACTS -->
@@ -372,6 +377,7 @@ Nostrud duis molestie at dolore.</p>
             Layout.initNavScrolling();
         });
     </script>
+    @yield('script')
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

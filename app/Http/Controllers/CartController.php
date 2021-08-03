@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,18 +20,30 @@ class CartController extends Controller
     }
     public function index()
     {
+        $categories = Category::all();
         $carts = Auth::user()->carts;
+        return view('cart.index', compact('carts','categories'));
         // dd($carts);
-        foreach ($carts as $data) {
-            echo $data->id;
-            echo $data->user_id;
-            echo $data->product->name;
-            echo $data->qty;
-            echo $data->subtotal;
-        };
-
+        // $sub = 0;
+        // foreach ($carts as $data) {
+        //     echo "<br>";
+        //     echo $data->id;
+        //     echo "user";
+        //     echo "<br>";
+        //     echo $data->user->name;
+        //     echo $data->product->name;
+        //     echo $data->qty;
+        //     echo $data->subtotal;
+        //     echo "<br>";
+        //     echo "Sub total";
+        //     echo "<br>";
+        //     echo $data->qty*$data->product->price;
+        //     $sub += $data->qty*$data->product->price;
+        // };
+        // echo "<br>";
+        // echo $sub;
         // beda
-        // $carts = Auth::user()->carts;
+        //
         // return $carts->map(function($obj) {
         //     unset($obj->user_id);
         //     unset($obj->created_at);
@@ -58,9 +71,10 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        $request['user_id'] = Auth::user()->id;
         Cart::create($request->all());
 
-        return redirect()->route('eshop.index');
+        return redirect()->route('cart.index');
     }
 
     /**
@@ -94,7 +108,10 @@ class CartController extends Controller
      */
     public function update(Request $request, Cart $cart)
     {
-        //
+        $request['user_id'] = Auth::user()->id;
+        $cart->update($request->all());
+
+        return redirect()->route('cart.index');
     }
 
     /**
@@ -105,6 +122,17 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
-        //
+        $cart->delete();
+        return redirect()->route('cart.index');
+    }
+    public function test(Request $request)
+    {
+        dd($request);
+        if($request->id && $request->qty){
+            $cart = session()->get('cart');
+            $cart[$request->id]["qty"] = $request->qty;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
+        }
     }
 }
