@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailTransaction;
+use App\Models\Cart;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -24,7 +27,43 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $transaksi = Auth::user()->transactions()->create([
+            'total' => '1000',
+        ]);
+
+        $carts = Auth::user()->carts;
+        $carts->map(function($obj) use($transaksi) {
+            unset($obj->user_id);
+            unset($obj->created_at);
+            unset($obj->updated_at);
+            $obj['transaksi_id'] = $transaksi->id;
+            return $obj;
+        });
+        // return $carts;
+        DetailTransaction::insert($carts);
+
+        // Cart::where('user_id', '=', Auth::user()->id)->delete();
+
+        $carts->delete();
+        /**
+         *  Get array cart by user id
+         *  create data transaksi. user id? Auth::user()->id
+         *  transaksi detail? foreach $cart, ubah user_id jadi tranksaksi_id. id? create tranksasi di atas
+         */
+        // $cart = Auth::user()->carts;
+
+        // $transaksi = Transaksi::create();
+
+        // $transaksi->transaksiDetail()->insert($cart);
+
+        // $transaksiDetail = [];
+
+        // foreach ($cart as $data) {
+        //     $transaksiDetail[] = [
+        //         'transaksi_id' => $transaksi->id,
+        //         'product_id' => $data->product_id,
+        //     ];
+        // }
     }
 
     /**
@@ -35,7 +74,8 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Transaction::create(Auth::user->id);
+        Auth::user()->transactions()->create();
     }
 
     /**

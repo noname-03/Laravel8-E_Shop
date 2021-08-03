@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -18,7 +19,25 @@ class CartController extends Controller
     }
     public function index()
     {
-        return 'hai';
+        $carts = Auth::user()->carts;
+        // dd($carts);
+        foreach ($carts as $data) {
+            echo $data->id;
+            echo $data->user_id;
+            echo $data->product->name;
+            echo $data->qty;
+            echo $data->subtotal;
+        };
+
+        // beda
+        // $carts = Auth::user()->carts;
+        // return $carts->map(function($obj) {
+        //     unset($obj->user_id);
+        //     unset($obj->created_at);
+        //     unset($obj->updated_at);
+        //     $obj['transaksi_id'] = 1;
+        //     return $obj;
+        // });
     }
 
     /**
@@ -39,7 +58,9 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::create($request->all());
+
+        return redirect()->route('eshop.index');
     }
 
     /**

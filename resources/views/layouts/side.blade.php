@@ -10,7 +10,7 @@
         <li><a><i class="fa fa-table"></i> Data <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <li><a href="{{ route('category.index') }}">Category</a></li>
-            <li><a href="#">Product</a></li>
+            <li><a href="{{ route('product.index') }}">Product</a></li>
           </ul>
         </li>
         <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>

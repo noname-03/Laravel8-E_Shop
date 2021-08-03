@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,9 +13,15 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $products = Product::all();
+        // dd($products);
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -24,7 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('product.create', compact('categories'));
     }
 
     /**
@@ -35,7 +43,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->file('namephoto')->getClientOriginalName();
+        $request->namephoto->move(public_path('images'), $name);
+        $request['photo'] = $name;
+        Product::create($request->except('namephoto'));
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -57,7 +70,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        // $products = Product::find($product);
+        $categories = Category::all();
+        // dd($product, $categories);
+        return view('product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -69,7 +85,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $name = $request->file('namephoto')->getClientOriginalName();
+        $request->namephoto->move(public_path('images'), $name);
+        $request['photo'] = $name;
+        $product->update($request->except('namephoto'));
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -80,6 +101,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('product.index');
     }
 }
